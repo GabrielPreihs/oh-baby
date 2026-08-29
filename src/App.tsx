@@ -5,7 +5,7 @@ import ptBr from './properties/pt-br'
 type Language = 'pt-BR' | 'en-US'
 type Copy = typeof ptBr
 
-const assets = '/assets'
+const assets = `${import.meta.env.BASE_URL}assets`
 
 function CameraPlaceholder({ label, compact = false }: { label: string; compact?: boolean }) {
   return (
@@ -47,7 +47,7 @@ function Hero({ copy }: { copy: Copy }) {
     <section className="hero" id="about">
       <div className="hero-copy">
         <p className="eyebrow">{copy.hero.eyebrow}</p>
-        <h1>Nicholas Eli</h1>
+        <h1>Nicolas Eli</h1>
         <span className="tiny-heart">♥</span>
         <p>{copy.hero.body}</p>
         <p className="translation">{copy.hero.bodySecondary}</p>
