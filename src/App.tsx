@@ -168,7 +168,7 @@ function DetailsSection({ copy }: { copy: Copy }) {
 }
 
 function App() {
-  const [language, setLanguage] = useState<Language>('pt-BR')
+  const [language, setLanguage] = useState<Language>('en-US')
   const copy = language === 'pt-BR' ? ptBr : enUs
 
   return (
