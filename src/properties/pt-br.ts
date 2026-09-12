@@ -5,8 +5,6 @@ const ptBr = {
     { id: 'dates', primary: 'Datas e Locais', secondary: 'Dates & Locations' },
     { id: 'games', primary: 'Brincadeiras', secondary: 'Games' },
     { id: 'gifts', primary: 'Presentes', secondary: 'Gifts' },
-    { id: 'rsvp', primary: 'Confirme sua Presença', secondary: 'RSVP' },
-    { id: 'faq', primary: 'Dúvidas', secondary: 'FAQ' },
   ],
   hero: {
     eyebrow: 'Nosso bebê está chegando!',
@@ -21,10 +19,14 @@ const ptBr = {
     intro: 'Para facilitar a participação de familiares e amigos, teremos dois chás de bebê em locais e datas diferentes. Escolha a opção que for mais conveniente para você.',
     introSecondary: 'Please choose whichever celebration is easiest for you.',
     cards: [
-      { title: 'CHÁ DE BEBÊ #1', date: 'A confirmar', time: 'Tarde — aprox. 2h30', location: 'A confirmar' },
-      { title: 'CHÁ DE BEBÊ #2', date: 'A confirmar', time: 'Tarde — aprox. 2h30', location: 'A confirmar' },
+      { title: 'CHÁ DE BEBÊ DRAPER', date: '17 de outubro', time: '13h', location: '12600 S 1300 E, canto sudeste do Draper Park', locationUrl: 'https://www.google.com/maps/search/?api=1&query=12600+S+1300+E%2C+Draper%2C+UT' },
+      { title: 'CHÁ DE BEBÊ TREMONTON', date: '28 de novembro', time: '15h', location: '4185 W 9600 N, Elwood, UT', locationUrl: 'https://www.google.com/maps/search/?api=1&query=4185+W+9600+N%2C+Elwood%2C+UT' },
     ],
     labels: { date: 'Data', time: 'Horário', location: 'Local', locationButton: 'VER LOCAL', rsvpButton: 'RSVP PARA ESSA DATA' },
+  },
+  raffle: {
+    title: 'Rifa de Fraldas e Lenços Umedecidos',
+    description: 'Traga um pacote de fraldas ou lenços umedecidos de qualquer tamanho para ter a chance de ganhar um prêmio.',
   },
   games: {
     title: 'O que te espera',
@@ -34,6 +36,9 @@ const ptBr = {
       { icon: 'calendar', title: 'Adivinhe a Chegada', text: 'Tente adivinhar a data, horário, peso e altura do bebê.' },
       { icon: 'owl', title: 'Verdadeiro ou Falso', text: 'Um quiz divertido sobre o mundo dos bebês.' },
       { icon: 'leaves', title: 'Palavras Sábias', text: 'Deixe uma mensagem especial para os papais.' },
+      { icon: 'baby-blocks', title: 'Decore blocos para o bebê', text: 'Decore blocos com desenhos especiais para o bebê.' },
+      { icon: 'how-many-bears', title: 'Quantos ursinhos?', text: 'Adivinhe quantos ursinhos há no pote.' },
+      { icon: 'baby-food-challenge', title: 'Desafio da papinha', text: 'Veja quem consegue identificar os sabores das papinhas.' },
     ],
     footer: 'Passaremos cerca de 2h30 juntos com comida, conversa, brincadeiras e atividades especiais para criar lembranças para o nosso bebê.',
   },
@@ -51,6 +56,7 @@ const ptBr = {
     registryButton: 'VER LISTA',
     fundTitle: 'Fundo para o Bebê',
     fundText: 'Contribua para fraldas, itens essenciais ou outras necessidades do bebê.',
+    fundWarning: 'Ao escanear, verifique se o nome do recebedor aparece como Nara Maria.',
     pix: 'ENVIO / PIX',
   },
   camera: 'Espaço reservado para foto',
