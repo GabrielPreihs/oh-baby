@@ -16,14 +16,12 @@ const ultrasoundImages = [
   { file: 'im-a-boy.jpeg', alt: 'Ultrasound announcement: it is a boy' },
 ]
 
-function CameraPlaceholder({ label, compact = false }: { label: string; compact?: boolean }) {
-  return (
-    <div className={`photo-placeholder${compact ? ' photo-placeholder--compact' : ''}`} aria-label={label}>
-      <span className="camera-icon" aria-hidden="true"><i /></span>
-      <span>{label}</span>
-    </div>
-  )
-}
+const familyImages = [
+  { file: 'belly-close-up.jpeg', alt: 'Close-up photo of the pregnant belly' },
+  { file: 'holding-belly.jpeg', alt: 'Photo of hands holding the pregnant belly' },
+  { file: 'loving-couple.jpeg', alt: 'Photo of the couple together during pregnancy' },
+  { file: 'teddy-bear.jpeg', alt: 'Photo of a teddy bear beside the pregnant belly' },
+]
 
 function Header({ copy, language, onLanguageChange }: { copy: Copy; language: Language; onLanguageChange: (language: Language) => void }) {
   const [menuOpen, setMenuOpen] = useState(false)
@@ -52,6 +50,20 @@ function Header({ copy, language, onLanguageChange }: { copy: Copy; language: La
 }
 
 function Hero({ copy }: { copy: Copy }) {
+  const [activePhoto, setActivePhoto] = useState(0)
+  const heroPhotoViewport = useRef<HTMLDivElement>(null)
+  const isAnimating = useRef(false)
+  const scrollTimeout = useRef<ReturnType<typeof setTimeout> | undefined>(undefined)
+
+  function goToPhoto(photoIndex: number) {
+    const viewport = heroPhotoViewport.current
+    setActivePhoto(photoIndex)
+    isAnimating.current = true
+    clearTimeout(scrollTimeout.current)
+    scrollTimeout.current = setTimeout(() => { isAnimating.current = false }, 500)
+    viewport?.scrollTo({ left: photoIndex * viewport.clientWidth, behavior: 'smooth' })
+  }
+
   return (
     <section className="hero" id="about">
       <div className="hero-copy">
@@ -62,7 +74,42 @@ function Hero({ copy }: { copy: Copy }) {
         <p className="translation">{copy.hero.bodySecondary}</p>
         <a className="primary-button" href="https://docs.google.com/forms/d/e/1FAIpQLScWXn_cvSCdCnxR_NNEImWlCavWC3RsyYwqzCG-Y8wzIdvxDA/viewform?usp=publish-editor" target="_blank" rel="noreferrer">{copy.hero.cta}</a>
       </div>
-      <CameraPlaceholder label={`${copy.hero.photo}\n${copy.hero.photoHint}`} />
+      <div className="hero-photo-gallery">
+        <div
+          className="hero-photo-viewport"
+          ref={heroPhotoViewport}
+          onPointerDown={() => {
+            isAnimating.current = false
+            clearTimeout(scrollTimeout.current)
+          }}
+          onScroll={(event) => {
+            if (isAnimating.current) return
+            const pageWidth = event.currentTarget.clientWidth
+            setActivePhoto(Math.round(event.currentTarget.scrollLeft / pageWidth))
+          }}
+          aria-label="Family photo gallery"
+        >
+          <div className="hero-photo-pages">
+            {familyImages.map((image) => (
+              <div className="hero-photo-page" key={image.file}>
+                <img src={`${assets}/family/${image.file}`} alt={image.alt} />
+              </div>
+            ))}
+          </div>
+        </div>
+        <div className="gallery-dots hero-photo-dots" aria-label="Choose family photo">
+          {familyImages.map((image, photoIndex) => (
+            <button
+              className={activePhoto === photoIndex ? 'active' : ''}
+              key={image.file}
+              type="button"
+              aria-label={`Show family photo ${photoIndex + 1}`}
+              aria-current={activePhoto === photoIndex ? 'page' : undefined}
+              onClick={() => goToPhoto(photoIndex)}
+            />
+          ))}
+        </div>
+      </div>
       <img className="hero-art" src={`${assets}/hero-wolf.webp`} alt="Watercolor wolf beside an evergreen tree" />
     </section>
   )
