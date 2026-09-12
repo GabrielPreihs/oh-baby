@@ -214,7 +214,7 @@ button { cursor: pointer; }
   background-color: #fff;
   background-image: url('/assets/dates-background.png');
   background-repeat: no-repeat;
-  background-position: center top;
+  background-position: left top;
   background-size: cover;
 }
 
@@ -337,7 +337,7 @@ h2 { margin: 0; font-size: 22px; font-weight: 400; }
   .hero .photo-placeholder { max-width: 500px; margin: 0 auto; }
   .hero-art { right: -9%; width: 58%; max-height: 390px; }
   .dates-section { padding: 25px 18px 145px; }
-  .dates-section { background-size: 100% 100%; }
+  .dates-section { background-position: left top; background-size: auto 100%; }
   .section-heading h2 span, .games-section h2 span { margin-inline: 9px; }
   .event-grid { grid-template-columns: 1fr; gap: 35px; max-width: 480px; margin: 32px auto 0; }
   .side-animal { height: 160px; }
