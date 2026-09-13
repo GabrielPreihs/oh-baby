@@ -17,10 +17,10 @@ const ultrasoundImages = [
 ]
 
 const familyImages = [
-  { file: 'belly-close-up.jpeg', alt: 'Close-up photo of the pregnant belly' },
   { file: 'holding-belly.jpeg', alt: 'Photo of hands holding the pregnant belly' },
-  { file: 'loving-couple.jpeg', alt: 'Photo of the couple together during pregnancy' },
   { file: 'teddy-bear.jpeg', alt: 'Photo of a teddy bear beside the pregnant belly' },
+  { file: 'belly-close-up.jpeg', alt: 'Close-up photo of the pregnant belly' },
+  { file: 'loving-couple.jpeg', alt: 'Photo of the couple together during pregnancy' },
 ]
 
 function Header({ copy, language, onLanguageChange }: { copy: Copy; language: Language; onLanguageChange: (language: Language) => void }) {
@@ -310,7 +310,7 @@ function GallerySection({ copy }: { copy: Copy }) {
             <div className="gallery-page" key={pageIndex} style={{ gridTemplateColumns: `repeat(${imagesPerPage}, minmax(0, 1fr))` }} aria-label={`Gallery page ${pageIndex + 1}`}>
               {page.map((image) => (
                 <img
-                  className={`ultrasound-image${image.file === 'im-a-boy.jpeg' ? ' ultrasound-image--contain' : ''}`}
+                  className={`ultrasound-image${image.file === 'im-a-boy.jpeg' || image.file === 'feet.jpeg' ? ' ultrasound-image--contain' : ''}`}
                   key={image.file}
                   src={`${assets}/ultrasound/${image.file}`}
                   alt={image.alt}

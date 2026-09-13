@@ -344,6 +344,8 @@ h2 { margin: 0; font-size: 22px; font-weight: 400; }
   .hero h1 { font-size: clamp(70px, 22vw, 102px); }
   .hero h1 { white-space: normal; }
   .hero .hero-photo-gallery { max-width: 500px; margin: 0 auto; }
+  .hero-photo-viewport { overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: thin; touch-action: pan-x; }
+  .hero-photo-page { scroll-snap-align: start; }
   .hero-art { right: -9%; width: 58%; max-height: 390px; }
   .dates-section { padding: 25px 18px 145px; }
   .dates-section { background-position: left top; background-size: auto 100%; }
